@@ -5,11 +5,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    static String secretNumber = String.valueOf(generateNumber());
     static int attempts;
     static boolean isMultiplayer;
 
-    public static void checkGuess(String guess) {
+    public static void checkGuess(String guess, String secretNumber) {
         int bulls = 0;
         int cows = 0;
 
@@ -22,12 +21,20 @@ public class Main {
             else if (secretNumber.contains(String.valueOf(digit))) {
                 cows++;
             }
-        }
 
+
+            if (bulls == 4) {
+                System.out.println("You won the game!");
+                System.out.println("The number was: " + secretNumber);
+                System.out.println("Total attempts: " + attempts);
+                break;
+            }
+        }
         System.out.println("Bulls: " + bulls);
         System.out.println("Cows: " + cows);
     }
     public static void play(int choice, Scanner scanner) {
+        String secretNumber = String.valueOf(generateNumber());
         attempts = 0;
         if (choice == 1) {
             isMultiplayer = false;
@@ -38,16 +45,11 @@ public class Main {
         }
 
         while (true) {
+            System.out.print("Enter guess: ");
             String guess = scanner.nextLine();
 
-            checkGuess();
+            checkGuess(guess, secretNumber);
 
-            if (bulls = 4) {
-                System.out.println("You won the game!");
-                System.out.println("The number was: " + secretNumber);
-                System.out.println("Total attempts: " + attempts);
-                break;
-            }
             attempts += 1;
         }
     }
@@ -77,6 +79,5 @@ public class Main {
         int choice = scanner.nextInt();
 
         play(choice, scanner);
-
     }
 }
