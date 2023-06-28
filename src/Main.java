@@ -39,7 +39,7 @@ public class Main {
 
         while (true) {
             System.out.print("Enter guess: ");
-            String guess = scanner.nextLine();
+            String guess = scanner.next();
 
             ArrayList<Integer> bullsAndCows = countBullsAndCows(guess, secretNumber);
             int bulls = bullsAndCows.get(0);
@@ -84,5 +84,6 @@ public class Main {
         int choice = scanner.nextInt();
 
         play(choice, scanner);
+
     }
 }
