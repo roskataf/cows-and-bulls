@@ -1,6 +1,4 @@
-import java.sql.DataTruncation;
-import java.sql.SQLOutput;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,7 +6,8 @@ public class Main {
     static int attempts;
     static boolean isMultiplayer;
 
-    public static void checkGuess(String guess, String secretNumber) {
+    public static ArrayList<Integer> countBullsAndCows(String guess, String secretNumber) {
+        ArrayList<Integer> bullsAndCows = new ArrayList<>();
         int bulls = 0;
         int cows = 0;
 
@@ -21,17 +20,11 @@ public class Main {
             else if (secretNumber.contains(String.valueOf(digit))) {
                 cows++;
             }
-
-
-            if (bulls == 4) {
-                System.out.println("You won the game!");
-                System.out.println("The number was: " + secretNumber);
-                System.out.println("Total attempts: " + attempts);
-                break;
-            }
         }
-        System.out.println("Bulls: " + bulls);
-        System.out.println("Cows: " + cows);
+        bullsAndCows.add(bulls);
+        bullsAndCows.add(cows);
+
+        return bullsAndCows;
     }
     public static void play(int choice, Scanner scanner) {
         String secretNumber = String.valueOf(generateNumber());
@@ -48,7 +41,19 @@ public class Main {
             System.out.print("Enter guess: ");
             String guess = scanner.nextLine();
 
-            checkGuess(guess, secretNumber);
+            ArrayList<Integer> bullsAndCows = countBullsAndCows(guess, secretNumber);
+            int bulls = bullsAndCows.get(0);
+            int cows = bullsAndCows.get(1);
+
+            if (bulls == 4) {
+                System.out.println("You won the game!");
+                System.out.println("The number was: " + secretNumber);
+                System.out.println("Total attempts: " + attempts);
+                break;
+            }
+
+            System.out.println("Bulls: " + bulls);
+            System.out.println("Cows: " + cows);
 
             attempts += 1;
         }
