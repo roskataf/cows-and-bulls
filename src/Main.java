@@ -6,6 +6,10 @@ public class Main {
     static int attempts;
     static boolean isMultiplayer;
 
+    public static void playMultiplayer(Scanner scanner) {
+
+    }
+
     public static ArrayList<Integer> countBullsAndCows(String guess, String secretNumber) {
         ArrayList<Integer> bullsAndCows = new ArrayList<>();
         int bulls = 0;
@@ -32,7 +36,7 @@ public class Main {
         if (choice == 1) {
             isMultiplayer = false;
         } else if(choice == 2) {
-            isMultiplayer = true;
+            playMultiplayer(scanner);
         } else {
             System.out.println("Not a valid option.");
         }
