@@ -29,6 +29,25 @@ public class Main {
             System.out.println("Bulls: " + bulls1);
             System.out.println("Cows: " + cows1);
 
+
+            System.out.print("Player 2, enter your guess: ");
+            String guess2 = scanner.nextLine();
+
+            ArrayList<Integer> bullsAndCows2 = countBullsAndCows(guess2, number1);
+            int bulls2 = bullsAndCows2.get(0);
+            int cows2 = bullsAndCows2.get(1);
+
+            if (bulls2 == 4) {
+                System.out.println("Player 2 wins the game!");
+                System.out.println("Player 1's number was: " + number1);
+                System.out.println("Total attempts: " + attempts);
+                break;
+            }
+
+            System.out.println("Bulls: " + bulls2);
+            System.out.println("Cows: " + cows2);
+
+            attempts += 1;
         }
     }
 
