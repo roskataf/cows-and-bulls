@@ -7,7 +7,29 @@ public class Main {
     static boolean isMultiplayer;
 
     public static void playMultiplayer(Scanner scanner) {
+        String number1 = String.valueOf(generateNumber());
+        String number2 = String.valueOf(generateNumber());
+        attempts = 0;
 
+        while (true) {
+            System.out.print("Player 1, enter your guess: ");
+            String guess1 = scanner.nextLine();
+
+            ArrayList<Integer> bullsAndCows1 = countBullsAndCows(guess1, number2);
+            int bulls1 = bullsAndCows1.get(0);
+            int cows1 = bullsAndCows1.get(1);
+
+            if (bulls1 == 4) {
+                System.out.println("Player 1 wins the game!");
+                System.out.println("Player 2's number was: " + number2);
+                System.out.println("Total attempts: " + attempts);
+                break;
+            }
+
+            System.out.println("Bulls: " + bulls1);
+            System.out.println("Cows: " + cows1);
+
+        }
     }
 
     public static ArrayList<Integer> countBullsAndCows(String guess, String secretNumber) {
