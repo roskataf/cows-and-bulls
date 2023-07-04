@@ -13,7 +13,7 @@ public class Main {
 
         while (true) {
             System.out.print("Player 1, enter your guess: ");
-            String guess1 = scanner.nextLine();
+            String guess1 = scanner.next();
 
             ArrayList<Integer> bullsAndCows1 = countBullsAndCows(guess1, number2);
             int bulls1 = bullsAndCows1.get(0);
@@ -23,7 +23,7 @@ public class Main {
                 System.out.println("Player 1 wins the game!");
                 System.out.println("Player 2's number was: " + number2);
                 System.out.println("Total attempts: " + attempts);
-                break;
+                return;
             }
 
             System.out.println("Bulls: " + bulls1);
@@ -31,7 +31,7 @@ public class Main {
 
 
             System.out.print("Player 2, enter your guess: ");
-            String guess2 = scanner.nextLine();
+            String guess2 = scanner.next();
 
             ArrayList<Integer> bullsAndCows2 = countBullsAndCows(guess2, number1);
             int bulls2 = bullsAndCows2.get(0);
@@ -41,7 +41,7 @@ public class Main {
                 System.out.println("Player 2 wins the game!");
                 System.out.println("Player 1's number was: " + number1);
                 System.out.println("Total attempts: " + attempts);
-                break;
+                return;
             }
 
             System.out.println("Bulls: " + bulls2);
@@ -94,7 +94,7 @@ public class Main {
                 System.out.println("You won the game!");
                 System.out.println("The number was: " + secretNumber);
                 System.out.println("Total attempts: " + attempts);
-                break;
+                return;
             }
 
             System.out.println("Bulls: " + bulls);
