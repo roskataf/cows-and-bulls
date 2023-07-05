@@ -23,6 +23,7 @@ public class Main {
                 System.out.println("Player 1 wins the game!");
                 System.out.println("Player 2's number was: " + number2);
                 System.out.println("Total attempts: " + attempts);
+                System.out.println("player 1: " + number1);
                 return;
             }
 
@@ -41,6 +42,7 @@ public class Main {
                 System.out.println("Player 2 wins the game!");
                 System.out.println("Player 1's number was: " + number1);
                 System.out.println("Total attempts: " + attempts);
+                System.out.println("player 2: " + number2);
                 return;
             }
 
@@ -78,6 +80,7 @@ public class Main {
             isMultiplayer = false;
         } else if(choice == 2) {
             playMultiplayer(scanner);
+            return;
         } else {
             System.out.println("Not a valid option.");
         }
