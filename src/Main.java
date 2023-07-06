@@ -20,15 +20,11 @@ public class Main {
             int cows1 = bullsAndCows1.get(1);
 
             if (bulls1 == 4) {
-                System.out.println("Player 1 wins the game!");
-                System.out.println("Player 2's number was: " + number2);
-                System.out.println("Total attempts: " + attempts);
-                System.out.println("player 1: " + number1);
+                endGame("Player 1", number2, number1);
                 return;
             }
 
-            System.out.println("Bulls: " + bulls1);
-            System.out.println("Cows: " + cows1);
+            printBullsAndCows(bulls1, cows1);
 
 
             System.out.print("Player 2, enter your guess: ");
@@ -39,15 +35,11 @@ public class Main {
             int cows2 = bullsAndCows2.get(1);
 
             if (bulls2 == 4) {
-                System.out.println("Player 2 wins the game!");
-                System.out.println("Player 1's number was: " + number1);
-                System.out.println("Total attempts: " + attempts);
-                System.out.println("player 2: " + number2);
+                endGame("Player 2", number1, number2);
                 return;
             }
 
-            System.out.println("Bulls: " + bulls2);
-            System.out.println("Cows: " + cows2);
+            printBullsAndCows(bulls2, cows2);
 
             attempts += 1;
         }
@@ -63,8 +55,7 @@ public class Main {
 
             if (digit == secretNumber.charAt(i)) {
                 bulls++;
-            }
-            else if (secretNumber.contains(String.valueOf(digit))) {
+            } else if (secretNumber.contains(String.valueOf(digit))) {
                 cows++;
             }
         }
@@ -73,12 +64,13 @@ public class Main {
 
         return bullsAndCows;
     }
+
     public static void play(int choice, Scanner scanner) {
         String secretNumber = String.valueOf(generateNumber());
         attempts = 0;
         if (choice == 1) {
             isMultiplayer = false;
-        } else if(choice == 2) {
+        } else if (choice == 2) {
             playMultiplayer(scanner);
             return;
         } else {
@@ -94,18 +86,32 @@ public class Main {
             int cows = bullsAndCows.get(1);
 
             if (bulls == 4) {
-                System.out.println("You won the game!");
-                System.out.println("The number was: " + secretNumber);
-                System.out.println("Total attempts: " + attempts);
+                endGame("You", secretNumber, "");
                 return;
             }
 
-            System.out.println("Bulls: " + bulls);
-            System.out.println("Cows: " + cows);
+            printBullsAndCows(bulls, cows);
 
             attempts += 1;
         }
     }
+
+    public static void endGame(String winner, String winnerNumber, String loserNumber) {
+        System.out.println(winner + " wins the game!");
+        System.out.println(winner + " number was: " + winnerNumber);
+        if (winner.equalsIgnoreCase("Player 1")) {
+            System.out.println("Player 2 number was: " + loserNumber);
+        } else {
+            System.out.println("Player 1 number was: " + loserNumber);
+        }
+        System.out.println("Total attempts: " + attempts);
+    }
+
+    public static void printBullsAndCows(int bulls, int cows) {
+        System.out.println("Bulls: " + bulls);
+        System.out.println("Cows: " + cows);
+    }
+
     public static int generateNumber() {
         Random random = new Random();
 
